@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sign In to Netflix - Access your account and personalized profile.">
+  <title>Netflix - Sign In</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .netflix-auth-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #E50914;
+      letter-spacing: -1.5px;
+      text-transform: uppercase;
+    }
+    .netflix-n-symbol {
+      fill: #E50914;
+      width: 36px;
+      height: 42px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-page">
+    <div class="auth-header">
+      <a href="index.html" class="netflix-auth-logo">
+        <svg class="netflix-n-symbol" viewBox="0 0 24 32">
+          <path d="M0 0h5.5l7 18.5V0h5.5v32h-5.5L5.5 13.5V32H0V0z" fill="#E50914"/>
+        </svg>
+        NETFLIX
+      </a>
+    </div>
+
+    <div class="auth-card">
+      <h1 class="auth-title">Sign In</h1>
+
+      <form id="login-form" class="auth-form">
+        <div class="form-group">
+          <input type="email" id="email" class="form-input" placeholder=" " required autofocus>
+          <label for="email" class="form-label">Email or Phone Number</label>
+        </div>
+
+        <div class="form-group">
+          <input type="password" id="password" class="form-input" placeholder=" " required>
+          <label for="password" class="form-label">Password</label>
+        </div>
+
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" id="remember-me" checked>
+            <span>Remember me</span>
+          </label>
+          <a href="#" class="auth-help-link" id="forgot-password-link">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-red auth-submit-btn">Sign In</button>
+      </form>
+
+      <div class="auth-footer">
+        New to Netflix? <a href="signup.html">Sign up now</a>.
+      </div>
+    </div>
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div class="modal-backdrop" id="forgot-modal">
+    <div class="modal-container" style="max-width: 480px; padding: 2.5rem 2rem;">
+      <button class="modal-close-btn" id="close-forgot-modal"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+      <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff;">Reset Password</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Enter your email and choose a new password to update your Netflix account.</p>
+
+      <form id="forgot-form" class="auth-form">
+        <div class="form-group">
+          <input type="email" id="reset-email" class="form-input" placeholder=" " required>
+          <label for="reset-email" class="form-label">Account Email Address</label>
+        </div>
+
+        <div class="form-group">
+          <input type="password" id="reset-password" class="form-input" placeholder=" " required minlength="6">
+          <label for="reset-password" class="form-label">New Password (6+ chars)</label>
+        </div>
+
+        <button type="submit" class="btn btn-red auth-submit-btn" style="margin-top: 0.5rem;">Update Password</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    const loginForm = document.getElementById('login-form');
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const remember = document.getElementById('remember-me').checked;
+
+      const res = loginUser(email, password, remember);
+      if (res.success) {
+        window.location.href = 'browse.html';
+      } else {
+        alert(res.message);
+      }
+    });
+
+    // Forgot Password Modal Handlers
+    const forgotLink = document.getElementById('forgot-password-link');
+    const forgotModal = document.getElementById('forgot-modal');
+    const closeForgotModal = document.getElementById('close-forgot-modal');
+    const forgotForm = document.getElementById('forgot-form');
+
+    forgotLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      forgotModal.classList.add('show');
+    });
+
+    closeForgotModal.addEventListener('click', () => {
+      forgotModal.classList.remove('show');
+    });
+
+    forgotForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('reset-email').value.trim();
+      const newPassword = document.getElementById('reset-password').value;
+
+      const res = resetPassword(email, newPassword);
+      if (res.success) {
+        alert(res.message);
+        forgotModal.classList.remove('show');
+        document.getElementById('email').value = email;
+      } else {
+        alert(res.message);
+      }
+    });
+  </script>
+</body>
+</html>

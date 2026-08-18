@@ -1,0 +1,196 @@
+/* ==========================================================================
+   NETFLIX AUTHENTICATION & PROFILE STYLES
+   ========================================================================== */
+
+.auth-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: 
+    linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.75) 100%),
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.85) 100%),
+    url('../assets/images/netflix_bg.jpg') center/cover no-repeat;
+  padding: 2rem 1rem;
+}
+
+.auth-header {
+  position: absolute;
+  top: 1.5rem;
+  left: 3rem;
+  z-index: 10;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 450px;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: var(--border-radius-lg);
+  padding: 3.5rem 3rem 2.5rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+}
+
+.auth-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  width: 100%;
+  padding: 1rem 1rem 0.5rem;
+  background: rgba(51, 51, 51, 0.7);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-sm);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.form-input:focus {
+  background: rgba(69, 69, 69, 0.85);
+  border-color: var(--primary-red);
+}
+
+.form-label {
+  position: absolute;
+  left: 1rem;
+  top: 0.8rem;
+  color: #8c8c8c;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+  pointer-events: none;
+}
+
+.form-input:focus ~ .form-label,
+.form-input:not(:placeholder-shown) ~ .form-label {
+  top: 0.25rem;
+  font-size: 0.7rem;
+  color: #a0a0a0;
+}
+
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #b3b3b3;
+  margin-top: 0.5rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.remember-me input {
+  accent-color: var(--primary-red);
+  width: 16px;
+  height: 16px;
+}
+
+.auth-help-link {
+  color: #b3b3b3;
+}
+.auth-help-link:hover {
+  text-decoration: underline;
+}
+
+.auth-submit-btn {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  font-size: 1.05rem;
+}
+
+.auth-footer {
+  margin-top: 2.5rem;
+  color: #737373;
+  font-size: 0.95rem;
+}
+
+.auth-footer a {
+  color: #fff;
+  font-weight: 500;
+}
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Profile Selector Styles */
+.profile-select-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 2rem;
+}
+
+.profile-select-title {
+  font-size: 3.5rem;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+}
+
+.profiles-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  width: 130px;
+}
+
+.profile-card-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: var(--border-radius-md);
+  object-fit: cover;
+  border: 3px solid transparent;
+  transition: all var(--transition-normal);
+}
+
+.profile-card:hover .profile-card-avatar {
+  border-color: #fff;
+  transform: scale(1.05);
+}
+
+.profile-card-name {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  transition: color var(--transition-fast);
+}
+
+.profile-card:hover .profile-card-name {
+  color: #fff;
+}

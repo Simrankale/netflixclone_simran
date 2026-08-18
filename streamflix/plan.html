@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Choose your Netflix Membership Plan - Unlimited movies, TV shows and more.">
+  <title>Choose Your Plan - Netflix</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .plan-page-container {
+      max-width: 1050px;
+      margin: 3rem auto;
+      padding: 0 var(--container-padding);
+    }
+    .plan-header-box {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .plan-badge {
+      color: var(--primary-red);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .plan-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .plan-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      align-items: center;
+      color: #d2d2d2;
+      font-size: 1.05rem;
+    }
+    .plan-bullet-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .plan-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .plan-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      border-radius: var(--border-radius-lg);
+      padding: 1.8rem 1.5rem;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .plan-card:hover,
+    .plan-card.selected {
+      border-color: var(--primary-red);
+      box-shadow: 0 8px 24px rgba(229, 9, 20, 0.4);
+      transform: translateY(-4px);
+    }
+    .plan-card.selected::before {
+      content: '✓ SELECTED';
+      position: absolute;
+      top: -12px;
+      right: 15px;
+      background-color: var(--primary-red);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+    .plan-card-name {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    .plan-card-price {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--primary-red);
+      margin-bottom: 1.2rem;
+    }
+    .plan-card-detail {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .plan-card-detail strong {
+      color: #fff;
+    }
+  </style>
+</head>
+<body style="background-color: #141414;">
+
+  <!-- Header Navbar -->
+  <header class="navbar" style="background:#000;">
+    <div class="nav-left">
+      <a href="index.html" class="brand-logo" style="font-size:1.8rem; color:#E50914;">
+        <svg viewBox="0 0 24 32" style="fill:#E50914; width:26px; height:30px;"><path d="M0 0h5.5l7 18.5V0h5.5v32h-5.5L5.5 13.5V32H0V0z"/></svg>
+        NETFLIX
+      </a>
+    </div>
+    <div class="nav-right">
+      <button onclick="logoutUser()" class="nav-link" style="color:var(--text-muted);">Sign Out</button>
+    </div>
+  </header>
+
+  <main class="plan-page-container">
+    <div class="plan-header-box">
+      <span class="plan-badge">STEP 2 OF 2</span>
+      <h1 class="plan-title">Choose the plan that’s right for you</h1>
+      
+      <div class="plan-bullets">
+        <div class="plan-bullet-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#E50914"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+          <span>No commitments, cancel anytime.</span>
+        </div>
+        <div class="plan-bullet-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#E50914"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+          <span>Everything on Netflix for one low price.</span>
+        </div>
+        <div class="plan-bullet-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#E50914"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+          <span>No ads and no extra fees. Ever.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plan Selection Cards Grid -->
+    <div class="plan-cards-grid">
+      <div class="plan-card" data-plan="mobile">
+        <div>
+          <div class="plan-card-name">Mobile</div>
+          <div class="plan-card-price">₹149 / mo</div>
+          <div class="plan-card-detail"><span>Resolution</span><strong>480p (SD)</strong></div>
+          <div class="plan-card-detail"><span>Supported Devices</span><strong>Phone, Tablet</strong></div>
+        </div>
+      </div>
+
+      <div class="plan-card" data-plan="basic">
+        <div>
+          <div class="plan-card-name">Basic</div>
+          <div class="plan-card-price">₹199 / mo</div>
+          <div class="plan-card-detail"><span>Resolution</span><strong>720p (HD)</strong></div>
+          <div class="plan-card-detail"><span>Supported Devices</span><strong>TV, Laptop, Phone</strong></div>
+        </div>
+      </div>
+
+      <div class="plan-card selected" data-plan="standard">
+        <div>
+          <div class="plan-card-name">Standard</div>
+          <div class="plan-card-price">₹499 / mo</div>
+          <div class="plan-card-detail"><span>Resolution</span><strong>1080p (Full HD)</strong></div>
+          <div class="plan-card-detail"><span>Supported Devices</span><strong>2 Screens Simultaneously</strong></div>
+        </div>
+      </div>
+
+      <div class="plan-card" data-plan="premium">
+        <div>
+          <div class="plan-card-name">Premium</div>
+          <div class="plan-card-price">₹649 / mo</div>
+          <div class="plan-card-detail"><span>Resolution</span><strong>4K Ultra HD + HDR</strong></div>
+          <div class="plan-card-detail"><span>Supported Devices</span><strong>4 Screens + Spatial Audio</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <button id="confirm-plan-btn" class="btn btn-red" style="padding:1rem 3rem; font-size:1.2rem;">
+        Next: Start Streaming ›
+      </button>
+    </div>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script>
+    let selectedPlan = 'standard';
+
+    const planCards = document.querySelectorAll('.plan-card');
+    planCards.forEach(card => {
+      card.addEventListener('click', () => {
+        planCards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedPlan = card.getAttribute('data-plan');
+      });
+    });
+
+    document.getElementById('confirm-plan-btn').addEventListener('click', () => {
+      setUserPlan(selectedPlan);
+      window.location.href = 'browse.html';
+    });
+  </script>
+</body>
+</html>

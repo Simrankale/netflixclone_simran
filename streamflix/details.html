@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Title details, cast, synopsis, and player on Netflix.">
+  <title>Title Details - Netflix</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .netflix-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #E50914;
+      letter-spacing: -1.5px;
+      text-transform: uppercase;
+    }
+    .netflix-n-symbol {
+      fill: #E50914;
+      width: 26px;
+      height: 30px;
+    }
+    .details-page-hero {
+      position: relative;
+      width: 100%;
+      min-height: 500px;
+      background-size: cover;
+      background-position: center top;
+      display: flex;
+      align-items: flex-end;
+      padding: 4rem var(--container-padding) 2rem;
+      margin-top: calc(-1 * var(--navbar-height));
+    }
+    .details-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20,20,20,0.4) 0%, rgba(20,20,20,0.85) 60%, var(--bg-dark) 100%);
+    }
+    .details-hero-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    .details-poster-img {
+      width: 220px;
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-main);
+      border: 1px solid var(--glass-border);
+    }
+    .details-text-box {
+      flex: 1;
+      min-width: 300px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="browse.html" class="netflix-brand-logo">
+        <svg class="netflix-n-symbol" viewBox="0 0 24 32">
+          <path d="M0 0h5.5l7 18.5V0h5.5v32h-5.5L5.5 13.5V32H0V0z" fill="#E50914"/>
+        </svg>
+        NETFLIX
+      </a>
+      <ul class="nav-links">
+        <li><a href="browse.html" class="nav-link">Home</a></li>
+        <li><a href="movies.html" class="nav-link">Movies</a></li>
+        <li><a href="tv-shows.html" class="nav-link">TV Shows</a></li>
+        <li><a href="search.html" class="nav-link">Search</a></li>
+        <li><a href="my-list.html" class="nav-link">My List</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <div class="profile-menu-container">
+        <div class="profile-trigger">
+          <img class="profile-avatar" src="assets/images/logo.jpg" alt="Profile">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Details Page Hero -->
+    <section id="details-backdrop" class="details-page-hero">
+      <div class="details-hero-overlay"></div>
+      <div class="container details-hero-content">
+        <img id="details-poster" class="details-poster-img" src="" alt="Poster">
+        <div class="details-text-box">
+          <h1 id="details-title" class="hero-title" style="margin-bottom:0.5rem;">Movie Title</h1>
+          <div class="hero-meta" style="margin-bottom:1rem;">
+            <span id="details-rating" class="hero-rating">8.7 ★</span>
+            <span id="details-year">2026</span>
+            <span id="details-maturity" class="hero-maturity">13+</span>
+            <span id="details-duration">2h 18m</span>
+            <span id="details-genre" class="badge-red">Sci-Fi</span>
+          </div>
+          <div class="hero-actions" style="margin-top:1.5rem;">
+            <button id="details-play-btn" class="btn btn-primary hero-btn">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Play Movie
+            </button>
+            <button id="details-list-btn" class="btn btn-secondary hero-btn">
+              ＋ Add to My List
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Details Info Content -->
+    <section class="container" style="padding-top:2.5rem; padding-bottom:3rem;">
+      <div style="display:grid; grid-template-columns: 2fr 1fr; gap:3rem;">
+        <div>
+          <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:1rem;">Synopsis</h2>
+          <p id="details-synopsis" style="font-size:1.1rem; line-height:1.7; color:#d2d2d2;"></p>
+        </div>
+        <div class="modal-meta-grid" style="background:var(--bg-card); padding:1.5rem; border-radius:var(--border-radius-md); border:1px solid var(--glass-border);">
+          <div class="modal-meta-row"><span class="modal-meta-label">Starring:</span> <span id="details-cast" class="modal-meta-value"></span></div>
+          <div class="modal-meta-row"><span class="modal-meta-label">Director:</span> <span id="details-director" class="modal-meta-value"></span></div>
+          <div class="modal-meta-row"><span class="modal-meta-label">Audio:</span> <span class="modal-meta-value">English [Original], Hindi, Spanish</span></div>
+          <div class="modal-meta-row"><span class="modal-meta-label">Subtitles:</span> <span class="modal-meta-value">English, Spanish, French</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recommended Content Section -->
+    <section class="container" style="padding-bottom:4rem;">
+      <h2 class="row-title" style="margin-bottom:1.5rem;">More Like This</h2>
+      <div id="recommended-grid" class="cards-grid" style="padding:0;"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-copyright">
+        <span>© 2026 <span class="footer-brand">Netflix</span> Platform. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/mylist.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/movies.js"></script>
+  <script src="js/details.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

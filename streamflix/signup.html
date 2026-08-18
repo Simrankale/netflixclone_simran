@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create a Netflix account to watch unlimited movies and TV shows.">
+  <title>Netflix - Sign Up</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .netflix-auth-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #E50914;
+      letter-spacing: -1.5px;
+      text-transform: uppercase;
+    }
+    .netflix-n-symbol {
+      fill: #E50914;
+      width: 36px;
+      height: 42px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-page">
+    <div class="auth-header">
+      <a href="index.html" class="netflix-auth-logo">
+        <svg class="netflix-n-symbol" viewBox="0 0 24 32">
+          <path d="M0 0h5.5l7 18.5V0h5.5v32h-5.5L5.5 13.5V32H0V0z" fill="#E50914"/>
+        </svg>
+        NETFLIX
+      </a>
+    </div>
+
+    <div class="auth-card">
+      <h1 class="auth-title">Create Account</h1>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Step 1 of 2: Create your account to start your membership.</p>
+
+      <form id="signup-form" class="auth-form">
+        <div class="form-group">
+          <input type="text" id="name" class="form-input" placeholder=" " required autofocus>
+          <label for="name" class="form-label">Full Name</label>
+        </div>
+
+        <div class="form-group">
+          <input type="email" id="email" class="form-input" placeholder=" " required>
+          <label for="email" class="form-label">Email Address</label>
+        </div>
+
+        <div class="form-group">
+          <input type="password" id="password" class="form-input" placeholder=" " required minlength="6">
+          <label for="password" class="form-label">Password (6+ characters)</label>
+        </div>
+
+        <div class="form-group">
+          <input type="password" id="confirm-password" class="form-input" placeholder=" " required>
+          <label for="confirm-password" class="form-label">Confirm Password</label>
+        </div>
+
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" required checked>
+            <span>I agree to Terms & Privacy Policy</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-red auth-submit-btn">Next: Choose Plan ›</button>
+      </form>
+
+      <div class="auth-footer">
+        Already have an account? <a href="login.html">Sign in</a>.
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match. Please try again.');
+        return;
+      }
+
+      const res = signupUser(name, email, password);
+      if (res.success) {
+        // Redirect to Membership Plan selection page (Step 2)
+        window.location.href = 'plan.html';
+      } else {
+        alert(res.message);
+      }
+    });
+  </script>
+</body>
+</html>

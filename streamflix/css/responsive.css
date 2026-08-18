@@ -1,0 +1,185 @@
+/* ==========================================================================
+   STREAMFLIX MEDIA QUERIES & RESPONSIVE DESIGN
+   ========================================================================== */
+
+/* Large Desktop (1920px+) */
+@media (min-width: 1920px) {
+  .hero-title {
+    font-size: 4.5rem;
+  }
+  .movie-card {
+    flex: 0 0 260px;
+  }
+}
+
+/* Standard Desktop (1440px - 1280px) */
+@media (max-width: 1440px) {
+  .hero-title {
+    font-size: 3.4rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .hero {
+    height: 75vh;
+  }
+  .hero-title {
+    font-size: 3rem;
+  }
+  .movie-card {
+    flex: 0 0 200px;
+  }
+}
+
+/* Tablet Layout (1024px - 768px) */
+@media (max-width: 1024px) {
+  .nav-left {
+    gap: 1.5rem;
+  }
+  .nav-links {
+    gap: 1rem;
+  }
+  .hero {
+    height: 70vh;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-description {
+    font-size: 1rem;
+    max-width: 500px;
+  }
+  .modal-body {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 60px;
+    --container-padding: 5%;
+  }
+
+  /* Mobile Navbar Menu Drawer */
+  .mobile-nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: var(--navbar-height);
+    left: -100%;
+    width: 250px;
+    height: calc(100vh - var(--navbar-height));
+    background: var(--bg-card);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+    transition: left var(--transition-normal);
+    box-shadow: 4px 0 20px rgba(0,0,0,0.8);
+  }
+
+  .nav-links.show {
+    left: 0;
+  }
+
+  .nav-search-input {
+    width: 100px;
+  }
+
+  .hero {
+    height: 65vh;
+    min-height: 480px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .hero-actions {
+    gap: 0.8rem;
+  }
+
+  .hero-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .movie-card {
+    flex: 0 0 160px;
+  }
+
+  .scroll-arrow {
+    display: none; /* Touch scrolling on mobile */
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .auth-card {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .auth-header {
+    left: 1.5rem;
+  }
+}
+
+/* Small Mobile Devices (480px - 320px) */
+@media (max-width: 480px) {
+  .brand-logo {
+    font-size: 1.4rem;
+  }
+
+  .nav-search-box {
+    padding: 0.2rem 0.5rem;
+  }
+  
+  .nav-search-input {
+    width: 70px;
+    font-size: 0.8rem;
+  }
+
+  .hero {
+    height: 58vh;
+    min-height: 420px;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .hero-meta {
+    font-size: 0.8rem;
+    gap: 0.5rem;
+  }
+
+  .hero-description {
+    display: none; /* Hide long description on tiny screens for clean layout */
+  }
+
+  .movie-card {
+    flex: 0 0 135px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .modal-hero {
+    height: 250px;
+  }
+
+  .modal-title {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,288 @@
+/* ==========================================================================
+   STREAMFLIX MODAL DIALOG STYLES
+   ========================================================================== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+  overflow-y: auto;
+}
+
+.modal-backdrop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-main);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  transform: scale(0.9) translateY(20px);
+  transition: transform var(--transition-normal);
+  margin: auto;
+}
+
+.modal-backdrop.show .modal-container {
+  transform: scale(1) translateY(0);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 30;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background: #fff;
+  color: #000;
+  transform: scale(1.1);
+}
+
+.modal-hero {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.modal-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+
+.modal-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.75) 60%, var(--bg-card) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+  z-index: 10;
+}
+
+.modal-hero-content {
+  width: 100%;
+}
+
+.modal-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.modal-mute-btn {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 12;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+}
+
+.modal-mute-btn svg,
+.modal-play-btn svg,
+.modal-list-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.modal-body {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.modal-meta-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.8rem;
+  margin: 0 0 1rem;
+  color: var(--text-main);
+  font-size: 0.8rem;
+}
+
+.modal-meta-strip .meta-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 22px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+  padding: 0 0.4rem;
+  color: #fff;
+}
+
+.modal-meta-strip .meta-icon,
+.modal-meta-strip .meta-rating {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 22px;
+  border-radius: 4px;
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+  padding: 0 0.4rem;
+  font-size: 0.72rem;
+}
+
+.modal-meta-strip .meta-tags {
+  color: var(--text-muted);
+  font-size: 0.76rem;
+}
+
+.modal-synopsis {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #e5e5e5;
+  margin-bottom: 1.5rem;
+}
+
+.modal-meta-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.modal-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.modal-meta-label {
+  color: var(--text-subtle);
+  font-weight: 600;
+}
+
+.modal-meta-value {
+  color: var(--text-main);
+}
+
+/* ============================================================
+   FULL SIZE TRAILER INSIDE MOVIE MODAL
+   ============================================================ */
+
+.modal-hero {
+    position: relative !important;
+    width: 100% !important;
+    height: 400px !important;
+    min-height: 400px !important;
+
+    overflow: hidden !important;
+    background: #000 !important;
+}
+
+
+/* YouTube trailer must fill the ENTIRE hero */
+
+.modal-hero .modal-trailer {
+    position: absolute !important;
+
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-width: 100% !important;
+    min-height: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: none !important;
+
+    display: block !important;
+
+    object-fit: cover !important;
+
+    background: #000 !important;
+
+    z-index: 1 !important;
+}
+
+
+/* Gradient over the bottom of trailer */
+
+.modal-hero::after {
+    content: "";
+
+    position: absolute !important;
+
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+
+    height: 55% !important;
+
+    z-index: 3 !important;
+
+    pointer-events: none !important;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.05) 30%,
+            rgba(24, 24, 24, 0.75) 80%,
+            #181818 100%
+        ) !important;
+}

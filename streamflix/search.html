@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Search Movies, TV Shows, genres, actors, and directors on Netflix.">
+  <title>Search & Discover - Netflix</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .netflix-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #E50914;
+      letter-spacing: -1.5px;
+      text-transform: uppercase;
+    }
+    .netflix-n-symbol {
+      fill: #E50914;
+      width: 26px;
+      height: 30px;
+    }
+    .search-hero-section {
+      padding: 3rem var(--container-padding) 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .search-big-input-box {
+      display: flex;
+      align-items: center;
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      border-radius: var(--border-radius-lg);
+      padding: 0.8rem 1.4rem;
+      margin: 1.5rem 0;
+      transition: all var(--transition-fast);
+      box-shadow: var(--shadow-main);
+    }
+    .search-big-input-box:focus-within {
+      border-color: var(--primary-red);
+      box-shadow: var(--glow-red);
+    }
+    .search-big-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      outline: none;
+      padding-left: 0.8rem;
+    }
+    .search-pills-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .search-genre-pill {
+      background: var(--bg-secondary);
+      color: var(--text-muted);
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all var(--transition-fast);
+    }
+    .search-genre-pill:hover,
+    .search-genre-pill.active {
+      background: var(--primary-red);
+      color: #fff;
+      border-color: var(--primary-red);
+    }
+    .search-empty-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 1rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="browse.html" class="netflix-brand-logo">
+        <svg class="netflix-n-symbol" viewBox="0 0 24 32">
+          <path d="M0 0h5.5l7 18.5V0h5.5v32h-5.5L5.5 13.5V32H0V0z" fill="#E50914"/>
+        </svg>
+        NETFLIX
+      </a>
+      <ul class="nav-links">
+        <li><a href="browse.html" class="nav-link">Home</a></li>
+        <li><a href="movies.html" class="nav-link">Movies</a></li>
+        <li><a href="tv-shows.html" class="nav-link">TV Shows</a></li>
+        <li><a href="search.html" class="nav-link active">Search</a></li>
+        <li><a href="my-list.html" class="nav-link">My List</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <div class="profile-menu-container">
+        <div class="profile-trigger">
+          <img class="profile-avatar" src="assets/images/logo.jpg" alt="Profile">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="search-hero-section">
+      <h1 class="page-title">Search & Discover</h1>
+      <p class="page-subtitle">Search by movie title, TV show, genre, actor, or director.</p>
+
+      <div class="search-big-input-box">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--text-muted)"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input type="text" id="search-input" class="search-big-input" placeholder="Type to search 'Action', 'Nolan', 'Interstellar'..." autofocus>
+      </div>
+
+      <div class="search-pills-container">
+        <span class="search-genre-pill active" data-genre="all">All</span>
+        <span class="search-genre-pill" data-genre="Action">Action</span>
+        <span class="search-genre-pill" data-genre="Sci-Fi">Sci-Fi</span>
+        <span class="search-genre-pill" data-genre="Crime">Crime</span>
+        <span class="search-genre-pill" data-genre="Drama">Drama</span>
+        <span class="search-genre-pill" data-genre="Horror">Horror</span>
+        <span class="search-genre-pill" data-genre="Thriller">Thriller</span>
+        <span class="search-genre-pill" data-genre="Comedy">Comedy</span>
+        <span class="search-genre-pill" data-genre="Animation">Animation</span>
+      </div>
+    </section>
+
+    <!-- Search Results Section -->
+    <section class="container" style="padding-bottom:5rem;">
+      <h2 id="search-results-title" class="row-title" style="margin-bottom:1.5rem;">All Netflix Titles</h2>
+      
+      <div id="search-results-grid" class="cards-grid" style="padding:0;"></div>
+
+      <div id="search-empty" class="search-empty-box" style="display:none;">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="var(--text-subtle)" style="margin-bottom:1rem;"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <h2 style="font-size:1.5rem; color:#fff;">No titles found.</h2>
+        <p style="margin-top:0.5rem;">Try searching for a different keyword or genre.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Detailed Modal -->
+  <div class="modal-backdrop" id="movie-modal">
+    <div class="modal-container">
+      <button class="modal-close-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+      <div class="modal-hero">
+        <button class="modal-mute-btn" aria-label="Mute trailer">
+          <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.74 2.5-2.26 2.5-4.02zm2.5-9.5v2.06c2.89 1.22 5 4.07 5 7.44s-2.11 6.22-5 7.44V21c4.01-1.38 7-5.19 7-9.5S22.01 6.38 19 5z"/></svg>
+        </button>
+        <div class="modal-hero-overlay">
+          <div class="modal-hero-content">
+            <h2 class="modal-title">Title</h2>
+            <div class="modal-actions">
+              <button class="btn btn-primary modal-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Play</button>
+              <button class="btn btn-secondary modal-list-btn">＋ Add to My List</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="modal-meta-strip"></div>
+          <p class="modal-synopsis"></p>
+        </div>
+        <div class="modal-meta-grid">
+          <div class="modal-meta-row"><span class="modal-meta-label">Cast:</span><span class="modal-meta-value modal-cast"></span></div>
+          <div class="modal-meta-row"><span class="modal-meta-label">Genres:</span><span class="modal-meta-value modal-genre"></span></div>
+          <div class="modal-meta-row"><span class="modal-meta-label">Rating:</span><span class="modal-meta-value modal-rating"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-copyright">
+        <span>© 2026 <span class="footer-brand">Netflix</span> Search. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/mylist.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/movies.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

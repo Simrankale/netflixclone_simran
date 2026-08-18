@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore TV Shows on Netflix - Binge-worthy series, anime, and dramas.">
+  <title>TV Shows - Netflix</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .netflix-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #E50914;
+      letter-spacing: -1.5px;
+      text-transform: uppercase;
+    }
+    .netflix-n-symbol {
+      fill: #E50914;
+      width: 26px;
+      height: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="browse.html" class="netflix-brand-logo">
+        <svg class="netflix-n-symbol" viewBox="0 0 24 32">
+          <path d="M0 0h5.5l7 18.5V0h5.5v32h-5.5L5.5 13.5V32H0V0z" fill="#E50914"/>
+        </svg>
+        NETFLIX
+      </a>
+      <ul class="nav-links">
+        <li><a href="browse.html" class="nav-link">Home</a></li>
+        <li><a href="movies.html" class="nav-link">Movies</a></li>
+        <li><a href="tv-shows.html" class="nav-link active">TV Shows</a></li>
+        <li><a href="search.html" class="nav-link">Search</a></li>
+        <li><a href="my-list.html" class="nav-link">My List</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <div class="nav-search-box">
+        <button class="nav-search-btn" onclick="window.location.href='search.html'"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></button>
+        <input type="text" class="nav-search-input" placeholder="Titles, genres...">
+      </div>
+      <div class="profile-menu-container">
+        <div class="profile-trigger">
+          <img class="profile-avatar" src="assets/images/logo.jpg" alt="Profile">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-title-section" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <h1 class="page-title">TV Shows</h1>
+        <p class="page-subtitle">Binge-worthy original series, anime, and intense crime sagas.</p>
+      </div>
+
+      <!-- Filters -->
+      <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
+        <select id="genre-filter" class="btn btn-secondary" style="padding:0.5rem 1rem; border:1px solid rgba(255,255,255,0.2); outline:none;">
+          <option value="all">All Genres</option>
+          <option value="Action">Action</option>
+          <option value="Animation">Animation</option>
+          <option value="Crime">Crime</option>
+          <option value="Drama">Drama</option>
+          <option value="Horror">Horror</option>
+          <option value="Sci-Fi">Sci-Fi</option>
+        </select>
+
+        <select id="year-filter" class="btn btn-secondary" style="padding:0.5rem 1rem; border:1px solid rgba(255,255,255,0.2); outline:none;">
+          <option value="all">All Years</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+        </select>
+
+        <select id="rating-filter" class="btn btn-secondary" style="padding:0.5rem 1rem; border:1px solid rgba(255,255,255,0.2); outline:none;">
+          <option value="all">All Ratings</option>
+          <option value="8.5">8.5+ Rating</option>
+          <option value="8.0">8.0+ Rating</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- TV Shows Cards Grid -->
+    <div id="grid-container" class="cards-grid"></div>
+  </main>
+
+  <!-- Detailed Modal -->
+  <div class="modal-backdrop" id="movie-modal">
+    <div class="modal-container">
+      <button class="modal-close-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+      <div class="modal-hero">
+        <button class="modal-mute-btn" aria-label="Mute trailer">
+          <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.74 2.5-2.26 2.5-4.02zm2.5-9.5v2.06c2.89 1.22 5 4.07 5 7.44s-2.11 6.22-5 7.44V21c4.01-1.38 7-5.19 7-9.5S22.01 6.38 19 5z"/></svg>
+        </button>
+        <div class="modal-hero-overlay">
+          <div class="modal-hero-content">
+            <h2 class="modal-title">Title</h2>
+            <div class="modal-actions">
+              <button class="btn btn-primary modal-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Play</button>
+              <button class="btn btn-secondary modal-list-btn">＋ Add to My List</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="modal-meta-strip"></div>
+          <p class="modal-synopsis"></p>
+        </div>
+        <div class="modal-meta-grid">
+          <div class="modal-meta-row"><span class="modal-meta-label">Cast:</span><span class="modal-meta-value modal-cast"></span></div>
+          <div class="modal-meta-row"><span class="modal-meta-label">Genres:</span><span class="modal-meta-value modal-genre"></span></div>
+          <div class="modal-meta-row"><span class="modal-meta-label">Rating:</span><span class="modal-meta-value modal-rating"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-copyright">
+        <span>© 2026 <span class="footer-brand">Netflix</span> TV Shows. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/mylist.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/movies.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initGridPage('tv');
+    });
+  </script>
+</body>
+</html>

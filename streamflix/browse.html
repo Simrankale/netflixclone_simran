@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="Netflix Dashboard - Watch Movies and TV Shows Online.">
+
+  <title>Home - Netflix</title>
+
+  <!-- =========================================================
+       GOOGLE FONTS
+       ========================================================= -->
+
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+
+  <!-- =========================================================
+       CSS
+       ========================================================= -->
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+
+  <!-- =========================================================
+       CUSTOM STYLES
+       ========================================================= -->
+
+  <style>
+
+    .netflix-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #E50914;
+      letter-spacing: -1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .netflix-n-symbol {
+      fill: #E50914;
+      width: 26px;
+      height: 30px;
+    }
+
+
+    /* =========================================================
+       FULL WIDTH FOOTER
+       ========================================================= */
+
+    footer {
+      width: 100%;
+      min-height: 260px;
+      background: #141414;
+      margin: 0;
+      padding: 45px 0 30px;
+      box-sizing: border-box;
+    }
+
+    .footer-content {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 0 4%;
+      box-sizing: border-box;
+    }
+
+    .social-links {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+    }
+
+    .social-icon {
+      width: 20px;
+      height: 20px;
+      fill: #b3b3b3;
+      transition: fill 0.2s ease;
+    }
+
+    .social-links a:hover .social-icon {
+      fill: #ffffff;
+    }
+
+    .footer-links {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px 40px;
+      margin-bottom: 30px;
+    }
+
+    .footer-links a {
+      color: #808080;
+      font-size: 13px;
+      line-height: 1.4;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #b3b3b3;
+      text-decoration: underline;
+    }
+
+    .footer-copyright {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #2a2a2a;
+      color: #666;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .footer-brand {
+      color: #808080;
+    }
+
+
+    /* =========================================================
+       MOBILE FOOTER
+       ========================================================= */
+
+    @media (max-width: 768px) {
+
+      footer {
+        padding: 35px 0 25px;
+      }
+
+      .footer-content {
+        padding: 0 5%;
+      }
+
+      .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px 25px;
+      }
+
+      .footer-copyright {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+    }
+
+
+    @media (max-width: 480px) {
+
+      .footer-links {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================================
+       NAVIGATION BAR
+       ========================================================= -->
+
+  <header class="navbar">
+
+    <div class="nav-left">
+
+      <a href="browse.html"
+         class="netflix-brand-logo">
+
+        <svg class="netflix-n-symbol"
+             viewBox="0 0 24 32">
+
+          <path d="M0 0h5.5l7 18.5V0h5.5v32h-5.5L5.5 13.5V32H0V0z"
+                fill="#E50914"/>
+
+        </svg>
+
+        NETFLIX
+
+      </a>
+
+
+      <ul class="nav-links">
+
+        <li>
+          <a href="browse.html"
+             class="nav-link active">
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a href="movies.html"
+             class="nav-link">
+            Movies
+          </a>
+        </li>
+
+        <li>
+          <a href="tv-shows.html"
+             class="nav-link">
+            TV Shows
+          </a>
+        </li>
+
+        <li>
+          <a href="search.html"
+             class="nav-link">
+            Search
+          </a>
+        </li>
+
+        <li>
+          <a href="my-list.html"
+             class="nav-link">
+            My List
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <!-- =======================================================
+         RIGHT NAVIGATION
+         ======================================================= -->
+
+    <div class="nav-right">
+
+
+      <!-- Search -->
+
+      <div class="nav-search-box">
+
+        <button class="nav-search-btn"
+                onclick="window.location.href='search.html'"
+                aria-label="Search">
+
+          <svg width="18"
+               height="18"
+               viewBox="0 0 24 24"
+               fill="currentColor">
+
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5
+                     16 5.91 13.09 3 9.5 3S3 5.91 3 9.5
+                     5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57
+                     l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0
+                     C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5
+                     14 7.01 14 9.5 11.99 14 9.5 14z"/>
+
+          </svg>
+
+        </button>
+
+        <input type="text"
+               class="nav-search-input"
+               placeholder="Titles, genres..."
+               aria-label="Search input">
+
+      </div>
+
+
+      <!-- =====================================================
+           NOTIFICATIONS
+           ===================================================== -->
+
+      <div class="notification-container">
+
+        <div class="notification-trigger"
+             aria-label="Notifications">
+
+          <svg width="22"
+               height="22"
+               viewBox="0 0 24 24"
+               fill="currentColor">
+
+            <path d="M12 22c1.1 0 2-.9 2-2h-4
+                     c0 1.1.89 2 2 2zm6-6v-5
+                     c0-3.07-1.64-5.64-4.5-6.32V4
+                     c0-.83-.67-1.5-1.5-1.5S10.5 3.17
+                     10.5 4v.68C7.63 5.36 6 7.92
+                     6 11v5l-2 2v1h16v-1l-2-2z"/>
+
+          </svg>
+
+          <span class="notification-badge">
+            3
+          </span>
+
+        </div>
+
+
+        <div class="notification-drawer">
+
+          <div class="notification-header">
+
+            <h3>
+              Notifications
+            </h3>
+
+            <span class="mark-read-btn">
+              Mark all read
+            </span>
+
+          </div>
+
+          <div class="notification-list"></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           PROFILE
+           ===================================================== -->
+
+      <div class="profile-menu-container">
+
+        <div class="profile-trigger">
+
+          <img class="profile-avatar"
+               id="current-user-avatar"
+               src="assets/images/logo.jpg"
+               alt="User Profile"
+               data-fallback="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80">
+
+          <svg class="dropdown-arrow"
+               viewBox="0 0 24 24">
+
+            <path d="M7 10l5 5 5-5z"/>
+
+          </svg>
+
+        </div>
+
+
+        <div class="profile-dropdown">
+
+          <div class="dropdown-profiles"
+               id="dropdown-profiles-container">
+
+            <!-- Filled by JavaScript -->
+
+          </div>
+
+
+          <a href="plan.html"
+             class="dropdown-item">
+
+            Membership Plan
+
+          </a>
+
+
+          <a href="login.html"
+             class="dropdown-item">
+
+            Account Settings
+
+          </a>
+
+
+          <a href="#"
+             class="dropdown-item"
+             onclick="showToast('Help Center available 24/7')">
+
+            Help Center
+
+          </a>
+
+
+          <div class="dropdown-item"
+               onclick="logoutUser()">
+
+            Sign Out of Netflix
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Mobile menu -->
+
+      <div class="mobile-nav-toggle"
+           aria-label="Toggle navigation">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================================
+       MAIN CONTENT
+       ========================================================= -->
+
+  <main>
+
+
+    <!-- =======================================================
+         HERO
+         ======================================================= -->
+
+    <section class="hero"
+             style="background-image: url('assets/images/bgmain.jpeg');">
+
+      <div class="hero-overlay"></div>
+
+
+      <div class="hero-container">
+
+        <div class="hero-badge-container">
+
+          <span class="hero-type-badge">
+            NETFLIX ORIGINAL
+          </span>
+
+          <span class="hero-meta-badge">
+            #1 IN MOVIES TODAY
+          </span>
+
+        </div>
+
+
+        <h1 class="hero-title">
+          THE LAST HORIZON
+        </h1>
+
+
+        <div class="hero-meta">
+
+          <span class="hero-rating">
+            99% Match
+          </span>
+
+          <span>
+            2026
+          </span>
+
+          <span class="hero-maturity">
+            13+
+          </span>
+
+          <span>
+            2h 49m
+          </span>
+
+          <span class="badge-red">
+            Sci-Fi
+          </span>
+
+        </div>
+
+
+        <p class="hero-description">
+
+          A mysterious signal from beyond the galaxy changes the future
+          of humanity. A courageous team of explorers embarks on a
+          high-stakes voyage through a wormhole to save Earth.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+
+          <button class="btn btn-primary hero-btn"
+                  onclick="window.location.href='details.html?id=interstellar&autoplay=true'">
+
+            <svg viewBox="0 0 24 24">
+
+              <path d="M8 5v14l11-7z"/>
+
+            </svg>
+
+            Play
+
+          </button>
+
+
+          <button class="btn btn-secondary hero-btn"
+                  onclick="openMovieDetails('interstellar')">
+
+            <svg viewBox="0 0 24 24">
+
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10
+                       10 10 10-4.48 10-10S17.52 2
+                       12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+
+            </svg>
+
+            More Info
+
+          </button>
+
+
+          <button class="btn btn-secondary hero-btn"
+                  onclick="toggleMyList('interstellar')">
+
+            <svg viewBox="0 0 24 24">
+
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+
+            </svg>
+
+            My List
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         MOVIE ROWS
+         ======================================================= -->
+
+    <div id="continue-watching-row"></div>
+
+    <div id="trending-row"></div>
+
+    <div id="top10-dashboard-row"></div>
+
+    <div id="popular-movies-row"></div>
+
+    <div id="popular-tv-row"></div>
+
+    <div id="new-releases-row"></div>
+
+    <div id="action-row"></div>
+
+    <div id="scifi-row"></div>
+
+    <div id="thriller-row"></div>
+
+    <div id="horror-row"></div>
+
+    <div id="animation-row"></div>
+
+  </main>
+
+
+  <!-- =========================================================
+       MOVIE MODAL
+       ========================================================= -->
+
+  <div class="modal-backdrop"
+       id="movie-modal">
+
+
+    <div class="modal-container">
+
+
+      <button class="modal-close-btn"
+              aria-label="Close modal">
+
+        <svg viewBox="0 0 24 24"
+             width="20"
+             height="20"
+             fill="currentColor">
+
+          <path d="M19 6.41L17.59 5
+                   12 10.59 6.41 5
+                   5 6.41 10.59 12
+                   5 17.59 6.41 19
+                   12 13.41 17.59 19
+                   19 17.59 13.41 12z"/>
+
+        </svg>
+
+      </button>
+
+
+      <div class="modal-hero">
+
+
+        <button class="modal-mute-btn"
+                aria-label="Mute trailer">
+
+          <svg viewBox="0 0 24 24">
+
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3
+                     c0-1.77-1.02-3.29-2.5-4.03v8.05
+                     c1.48-.74 2.5-2.26 2.5-4.02zm2.5-9.5
+                     v2.06c2.89 1.22 5 4.07 5 7.44s-2.11
+                     6.22-5 7.44V21c4.01-1.38 7-5.19
+                     7-9.5S22.01 6.38 19 5z"/>
+
+          </svg>
+
+        </button>
+
+
+        <div class="modal-hero-overlay">
+
+          <div class="modal-hero-content">
+
+            <h2 class="modal-title">
+              Title
+            </h2>
+
+
+            <div class="modal-actions">
+
+              <button class="btn btn-primary modal-play-btn">
+
+                <svg viewBox="0 0 24 24">
+
+                  <path d="M8 5v14l11-7z"/>
+
+                </svg>
+
+                Play
+
+              </button>
+
+
+              <button class="btn btn-secondary modal-list-btn">
+
+                ＋ Add to My List
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="modal-body">
+
+        <div>
+
+          <div class="modal-meta-strip"></div>
+
+          <p class="modal-synopsis"></p>
+
+        </div>
+
+
+        <div class="modal-meta-grid">
+
+
+          <div class="modal-meta-row">
+
+            <span class="modal-meta-label">
+              Cast:
+            </span>
+
+            <span class="modal-meta-value modal-cast"></span>
+
+          </div>
+
+
+          <div class="modal-meta-row">
+
+            <span class="modal-meta-label">
+              Genres:
+            </span>
+
+            <span class="modal-meta-value modal-genre"></span>
+
+          </div>
+
+
+          <div class="modal-meta-row">
+
+            <span class="modal-meta-label">
+              Rating:
+            </span>
+
+            <span class="modal-meta-value modal-rating"></span>
+
+          </div>
+
+
+          <div class="modal-meta-row">
+
+            <span class="modal-meta-label">
+              Year:
+            </span>
+
+            <span class="modal-meta-value modal-year"></span>
+
+          </div>
+
+
+          <div class="modal-meta-row">
+
+            <span class="modal-meta-label">
+              Duration:
+            </span>
+
+            <span class="modal-meta-value modal-duration"></span>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+
+  <footer>
+
+    <div class="footer-content">
+
+
+      <div class="social-links">
+
+        <a href="#"
+           aria-label="YouTube">
+
+          <svg class="social-icon"
+               viewBox="0 0 24 24">
+
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136
+                     C19.505 3.545 12 3.545 12 3.545s-7.505 0
+                     -9.377.505A3.017 3.017 0 0 0 .502 6.186
+                     C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016
+                     3.016 0 0 0 2.122 2.136c1.871.505 9.376.505
+                     9.376.505s7.505 0 9.377-.505a3.015 3.015
+                     0 0 0 2.122-2.136C24 15.93 24 12 24 12s0
+                     -3.93-.502-5.814zM9.545 15.568V8.432L15.818
+                     12l-6.273 3.568z"/>
+
+          </svg>
+
+        </a>
+
+
+        <a href="#"
+           aria-label="Instagram">
+
+          <svg class="social-icon"
+               viewBox="0 0 24 24">
+
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07
+                     3.252.148 4.771 1.691 4.919 4.919
+                     .058 1.265.069 1.645.069 4.849
+                     0 3.205-.012 3.584-.069 4.849
+                     -.149 3.225-1.664 4.771-4.919 4.919
+                     -1.266.058-1.644.07-4.85.07-3.204
+                     0-3.584-.012-4.849-.07-3.26-.149
+                     -4.771-1.699-4.919-4.92-.058-1.265
+                     -.07-1.644-.07-4.849 0-3.204.013-3.583
+                     .07-4.849.149-3.227 1.664-4.771
+                     4.919-4.919 1.266-.057 1.645-.069
+                     4.849-.069zm0-2.163c-3.259 0-3.667.014
+                     -4.947.072-4.358.2-6.78 2.618-6.98
+                     6.98-.059 1.281-.073 1.689-.073
+                     4.948 0 3.259.014 3.668.072 4.948
+                     .2 4.358 2.618 6.78 6.98 6.98
+                     1.281.058 1.689.072 4.948.072
+                     3.259 0 3.668-.014 4.948-.072
+                     4.354-.2 6.782-2.618 6.979-6.98
+                     .059-1.28.073-1.689.073-4.948
+                     0-3.259-.014-3.667-.072-4.947
+                     -.196-4.354-2.617-6.78-6.979-6.98
+                     -1.281-.059-1.69-.073-4.949-.073zm0
+                     5.838c-3.403 0-6.162 2.759-6.162 6.162
+                     s2.759 6.163 6.162 6.163 6.162-2.759
+                     6.162-6.163c0-3.403-2.759-6.162-6.162
+                     -6.162zm0 10.162c-2.209 0-4-1.79-4-4
+                     0-2.209 1.791-4 4-4s4 1.791 4 4
+                     c0 2.21-1.791 4-4 4zm6.406-11.845
+                     c-.796 0-1.441.645-1.441 1.44s.645
+                     1.44 1.441 1.44c.795 0 1.439-.645
+                     1.439-1.44s-.644-1.44-1.439-1.44z"/>
+
+          </svg>
+
+        </a>
+
+
+        <a href="#"
+           aria-label="Facebook">
+
+          <svg class="social-icon"
+               viewBox="0 0 24 24">
+
+            <path d="M24 12.073c0-6.627-5.373-12-12-12
+                     s-12 5.373-12 12c0 5.99 4.388 10.954
+                     10.125 11.854v-8.385H7.078v-3.47
+                     h3.047V9.43c0-3.007 1.792-4.669
+                     4.533-4.669 1.312 0 2.686.235
+                     2.686.235v2.953H15.83c-1.491 0
+                     -1.956.925-1.956 1.874v2.25h3.328
+                     l-.532 3.47h-2.796v8.385C19.612
+                     23.027 24 18.062 24 12.073z"/>
+
+          </svg>
+
+        </a>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="#">Audio Description</a>
+        <a href="#">Help Center</a>
+        <a href="#">Gift Cards</a>
+        <a href="#">Media Center</a>
+
+        <a href="#">Investor Relations</a>
+        <a href="#">Jobs</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Privacy Policy</a>
+
+        <a href="#">Legal Notices</a>
+        <a href="#">Cookie Preferences</a>
+        <a href="#">Corporate Information</a>
+        <a href="#">Contact Us</a>
+
+      </div>
+
+
+      <div class="footer-copyright">
+
+        <span>
+
+          © 2026
+          <span class="footer-brand">
+            Netflix
+          </span>,
+          Inc. All rights reserved.
+          MCA College Portfolio Project.
+
+        </span>
+
+
+        <span>
+          Original Platform
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+       ========================================================= -->
+
+  <script src="js/data.js"></script>
+
+  <script src="js/auth.js"></script>
+
+  <script src="js/mylist.js"></script>
+
+  <script src="js/player.js"></script>
+
+  <script src="js/movies.js"></script>
+
+  <script src="js/app.js"></script>
+
+
+  <!-- =========================================================
+       BROWSE PAGE LOGIC
+       ========================================================= -->
+
+  <script>
+
+    /* =========================================================
+       AUTHENTICATION GUARD
+       ---------------------------------------------------------
+       A user must actually be authenticated before browse.html
+       can be viewed.
+       ========================================================= */
+
+    function getAuthenticatedUser() {
+
+      try {
+
+        /*
+         * First use the authentication function from auth.js
+         * if it exists.
+         */
+
+        if (typeof getCurrentUser === 'function') {
+
+          const user = getCurrentUser();
+
+          if (user) {
+            return user;
+          }
+
+        }
+
+
+        /*
+         * Fallback to the authentication localStorage key.
+         */
+
+        const storedAuth =
+          localStorage.getItem('netflix_current_user');
+
+        if (storedAuth) {
+
+          const user =
+            JSON.parse(storedAuth);
+
+          if (user && user.email) {
+
+            return user;
+
+          }
+
+        }
+
+      } catch (error) {
+
+        console.error(
+          'Authentication check failed:',
+          error
+        );
+
+      }
+
+      return null;
+
+    }
+
+
+    /* =========================================================
+       PROTECT BROWSE PAGE
+       ========================================================= */
+
+    const authenticatedUser =
+      getAuthenticatedUser();
+
+
+    if (!authenticatedUser) {
+
+      /*
+       * Stop the page from behaving as a logged-in page.
+       */
+
+      document.documentElement.style.visibility = 'hidden';
+
+
+      /*
+       * Send unauthenticated users to login.
+       */
+
+      window.location.replace('login.html');
+
+    }
+
+
+    /* =========================================================
+       PROFILE INITIALIZATION
+       ========================================================= */
+
+    function initializeUserProfile() {
+
+      /*
+       * Use the REAL authenticated account.
+       * No fake Simran fallback.
+       */
+
+      const activeUser =
+        authenticatedUser;
+
+
+      if (!activeUser) {
+        return;
+      }
+
+
+      /*
+       * Keep currentUser synchronized for the rest of the
+       * existing project code.
+       */
+
+      try {
+
+        localStorage.setItem(
+          'currentUser',
+          JSON.stringify(activeUser)
+        );
+
+      } catch (error) {
+
+        console.error(
+          'Unable to synchronize current user:',
+          error
+        );
+
+      }
+
+
+      /* =======================================================
+         UPDATE PROFILE AVATAR
+         ======================================================= */
+
+      const avatar =
+        document.getElementById(
+          'current-user-avatar'
+        );
+
+
+      if (avatar && activeUser.avatar) {
+
+        avatar.src =
+          activeUser.avatar;
+
+      }
+
+
+      /* =======================================================
+         PROFILE DROPDOWN
+         ======================================================= */
+
+      const profilesContainer =
+        document.getElementById(
+          'dropdown-profiles-container'
+        );
+
+
+      if (!profilesContainer) {
+        return;
+      }
+
+
+      const safeName =
+        activeUser.name ||
+        activeUser.email ||
+        'User';
+
+
+      const safeAvatar =
+        activeUser.avatar ||
+        'assets/images/logo.jpg';
+
+
+      const safeId =
+        activeUser.id ||
+        'p1';
+
+
+      profilesContainer.innerHTML = `
+
+        <div class="dropdown-item"
+             onclick="setActiveProfile('${safeId}'); location.reload();">
+
+          <img
+            src="${safeAvatar}"
+            alt="${safeName}"
+            style="
+              width:24px;
+              height:24px;
+              border-radius:3px;
+            "
+          >
+
+          <span class="profile-name">
+            ${safeName}
+          </span>
+
+        </div>
+
+
+        <div class="dropdown-item"
+             onclick="setActiveProfile('p2'); location.reload();">
+
+          <img
+            src="assets/images/logo2.png"
+            alt="Kids"
+            style="
+              width:24px;
+              height:24px;
+              border-radius:3px;
+            "
+          >
+
+          <span>
+            Kids
+          </span>
+
+        </div>
+
+      `;
+
+    }
+
+
+    /* =========================================================
+       PAGE INITIALIZATION
+       ========================================================= */
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      () => {
+
+        /*
+         * If authentication failed, do not render the Netflix
+         * dashboard.
+         */
+
+        if (!authenticatedUser) {
+          return;
+        }
+
+
+        initializeUserProfile();
+
+
+        /* =====================================================
+           CONTENT ROWS
+           ===================================================== */
+
+        renderContinueWatchingRow(
+          'continue-watching-row'
+        );
+
+
+        renderRow(
+          'trending-row',
+          'Trending Now',
+          'trending'
+        );
+
+
+        renderTop10Row(
+          'top10-dashboard-row',
+          'Top 10 Movies & TV Shows Today'
+        );
+
+
+        renderRow(
+          'popular-movies-row',
+          'Popular Movies',
+          'popularMovies'
+        );
+
+
+        renderRow(
+          'popular-tv-row',
+          'Popular TV Shows',
+          'popularTV'
+        );
+
+
+        renderRow(
+          'new-releases-row',
+          'New Releases',
+          'newReleases'
+        );
+
+
+        renderRow(
+          'action-row',
+          'Action & Adventure',
+          'action'
+        );
+
+
+        renderRow(
+          'scifi-row',
+          'Sci-Fi & Fantasy',
+          'scifi'
+        );
+
+
+        renderRow(
+          'thriller-row',
+          'Thrillers & Crime',
+          'thriller'
+        );
+
+
+        renderRow(
+          'horror-row',
+          'Horror',
+          'horror'
+        );
+
+
+        renderRow(
+          'animation-row',
+          'Animation',
+          'animation'
+        );
+
+      }
+    );
+
+  </script>
+
+
+</body>
+
+</html>
